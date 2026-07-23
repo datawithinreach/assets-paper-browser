@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const stat2025 = document.querySelector('#stat-2025 .stat-value');
 
     // Fetch and load data
-    fetch('papers.json')
+    fetch('./papers.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to fetch papers.json');
