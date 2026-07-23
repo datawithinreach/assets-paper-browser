@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASSETS Paper Browser (2023–2025)</title>
+    <meta name="description" content="A beautiful and responsive interactive dashboard to browse, search, and filter papers published at ACM ASSETS between 2023 and 2025.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-decor">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <header class="app-header">
+        <div class="container">
+            <span class="badge">ACM SIGACCESS</span>
+            <h1>ASSETS Paper Browser</h1>
+            <p class="subtitle">Exploring research published in the International ACM SIGACCESS Conference on Computers and Accessibility (2023–2025)</p>
+        </div>
+    </header>
+
+    <main class="app-main container">
+        <!-- Stats Section -->
+        <section class="stats-section" aria-label="Publication Statistics">
+            <div class="stat-card" id="stat-total">
+                <div class="stat-value">0</div>
+                <div class="stat-label">Total Papers</div>
+            </div>
+            <div class="stat-card" id="stat-2023">
+                <div class="stat-value">0</div>
+                <div class="stat-label">Published in 2023</div>
+            </div>
+            <div class="stat-card" id="stat-2024">
+                <div class="stat-value">0</div>
+                <div class="stat-label">Published in 2024</div>
+            </div>
+            <div class="stat-card" id="stat-2025">
+                <div class="stat-value">0</div>
+                <div class="stat-label">Published in 2025</div>
+            </div>
+        </section>
+
+        <!-- Filters Section -->
+        <section class="filter-section" aria-label="Search and Filters">
+            <div class="search-box">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input type="text" id="search-input" placeholder="Search by title, author, or keyword..." aria-label="Search papers">
+                <button id="clear-search" class="clear-btn" aria-label="Clear search" style="display: none;">&times;</button>
+            </div>
+
+            <div class="filters-row">
+                <div class="filter-group">
+                    <span class="filter-label">Filter by Year</span>
+                    <div class="filter-pills" id="year-filters" role="group" aria-label="Year filters">
+                        <button class="pill active" data-year="all">All Years</button>
+                        <button class="pill" data-year="2023">2023</button>
+                        <button class="pill" data-year="2024">2024</button>
+                        <button class="pill" data-year="2025">2025</button>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <span class="filter-label">Filter by Topic</span>
+                    <div class="filter-pills" id="topic-filters" role="group" aria-label="Topic filters">
+                        <button class="pill active" data-topic="all">All Topics</button>
+                        <button class="pill" data-topic="Data Science">Data Science</button>
+                        <button class="pill" data-topic="Generative AI">Generative AI</button>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <span class="filter-label">Bookmarks</span>
+                    <div class="filter-pills" id="bookmark-filter-group" role="group">
+                        <button class="pill" id="bookmark-filter-btn" data-bookmarked="false">Bookmarked Only (0)</button>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <span class="filter-label">Sort By</span>
+                    <select id="sort-select" aria-label="Sort papers">
+                        <option value="default">Default (Conference Order)</option>
+                        <option value="title-asc">Title (A-Z)</option>
+                        <option value="title-desc">Title (Z-A)</option>
+                        <option value="year-desc">Year (Newest First)</option>
+                        <option value="year-asc">Year (Oldest First)</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section">
+            <div class="results-header">
+                <h2 id="results-count">Showing 0 papers</h2>
+            </div>
+            
+            <div id="papers-grid" class="papers-grid">
+                <!-- Loaded dynamically by app.js -->
+                <div class="loading-state">
+                    <div class="spinner"></div>
+                    <p>Loading papers...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer container">
+        <p>Data sourced from <a href="https://dblp.org/db/conf/assets/index.html" target="_blank" rel="noopener">DBLP Computer Science Bibliography</a>.</p>
+        <p>Built with &hearts; for Accessibility Research.</p>
+    </footer>
+
+    <!-- App Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
